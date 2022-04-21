@@ -8,16 +8,28 @@
 </head>
 
 <body <?php body_class(); ?>>
-<header class="site-header">
-    <p class="site-title">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-            <?php bloginfo( 'name' ); ?>
-        </a>
-    </p>
-    <p class="site-description"><?php bloginfo( 'description' ); ?></p>
-</header><! – .site-header – >
 
+<div class="sidebar">
+    <header class="site-header">
+        <p class="site-title">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                <?php bloginfo( 'name' ); ?>
+            </a>
+        </p>
+        <p class="site-description"><?php bloginfo( 'description' ); ?></p>
+    </header><! – .site-header – >
 
+    <div class="menues">
+        <?php wp_nav_menu( array(
+        'theme_location' => 'menu-1',
+        ) );?>
+
+        <?php wp_nav_menu( array(
+            'theme_location' => 'menu-2',
+        ) );?>
+    </div>
+
+</div>
 
 <div class="site-content">
     <?php
@@ -50,17 +62,9 @@
 
     else :
         ?>
-        <article class="no-results">
+        <div class="no-article">
 
-            <header class="entry-header">
-                <h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'my-custom-theme' ); ?></h1>
-            </header><! – .entry-header – >
-
-            <div class="entry-content">
-                <p><?php esc_html_e( 'It looks like nothing was found at this location.', 'my-custom-theme' ); ?></p>
-            </div><! – .entry-content – >
-
-        </article><! – .no-results – >
+        </div>
     <?php
     endif;
     ?>
