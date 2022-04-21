@@ -34,7 +34,11 @@
 <div class="site-content">
     <?php
     if ( have_posts() ) :
+        ?>
 
+        <div class="site-posts">
+
+        <?php
         while ( have_posts() ) :
 
             the_post();
@@ -59,7 +63,9 @@
             endif;
 
         endwhile;
-
+        ?>
+        </div>
+    <?php
     else :
         ?>
         <div class="no-article">

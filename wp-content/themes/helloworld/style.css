@@ -6,6 +6,20 @@ Author URI: https://ln.topdf.de/indexx/
 Description: This is my a custom theme for a professional website for my girlfriends mother.
 Version: 1.0.0
 */
+@font-face {
+    font-family: Roboto;
+    src: url(assets/Roboto-regular.ttf);
+}
+
+:root {
+    --primary-text-color: #000;
+    --secondary-text-color: #444;
+    --primary-background-color: #fff;
+    --accent-color: #35ba7a;
+    --border: 2px solid var(--accent-color);
+
+    --padding: 20px;
+}
 
 html {
     margin: 0;
@@ -16,18 +30,17 @@ body {
     padding: 0;
     min-height: 100vh;
 
+    background-color: var(--primary-background-color);
+
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
 }
 
-.sidebar {
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
 .site-header {
     font-size: 2em;
+    padding-right: var(--padding);
+    padding-left: var(--padding);
 }
 
 .site-title {
@@ -35,16 +48,12 @@ body {
 }
 
 .site-title a {
-    color: #35ba7a;
+    color: var(--accent-color);
     text-decoration: none;
 }
 
 .site-description {
     margin-top: 0;
-}
-
-.site-content {
-    width: 100%;
 }
 
 .no-article {
@@ -58,8 +67,10 @@ body {
 
 
 .menues {
-    border-top: 1px solid #ccc;
+    border-top: var(--border);
     font-size: 1.1em;
+    padding-right: var(--padding);
+    padding-left: var(--padding);
 }
 .menues ul {
     list-style: none;
@@ -71,9 +82,9 @@ body {
 }
 .menues ul li a {
     text-decoration: none;
-    color: #444;
+    color: var(--secondary-text-color);
 }
-.menues ul li a:hover {color: #000;}
+.menues ul li a:hover {color: var(--primary-text-color);}
 .menues ul li:hover {
     text-decoration: underline;
     transform: translateX(7px);
@@ -84,4 +95,26 @@ body {
     transform: translateX(7px);
     /*font-weight: 500;*/
 }
-.current_page_item a {color: #000 !important;}
+.current_page_item a {color: var(--primary-text-color) !important;}
+
+.sidebar {
+    border-right: var(--border);
+    max-width: 250px;
+    min-width: 250px;
+}
+
+.site-content {
+    flex-grow: 4;
+}
+
+
+
+
+
+.site-posts {
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+}
+.entry-title {
+    text-align: center;
+}
