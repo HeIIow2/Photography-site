@@ -9,7 +9,7 @@
 
 <body <?php body_class(); ?>>
 
-<div class="sidebar" id="sidebar">
+<div class="sidebar">
     <header class="site-header">
         <p class="site-title">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -28,6 +28,7 @@
             'theme_location' => 'menu-2',
         ) );?>
     </div>
+
 	
 	<div class="button-container">
 		
@@ -63,6 +64,7 @@
 		</script>
 		<button onclick="toggle_theme();"><div class="button-icon"></div></button>
 	</div>
+
 
 </div>
 
@@ -113,6 +115,9 @@
 
 
 <?php wp_footer(); ?>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 615f5ec49abcab70e6a0d099d61cb98fa14ac4ee
 </body>
 </html>

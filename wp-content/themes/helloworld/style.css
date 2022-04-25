@@ -26,6 +26,7 @@ Version: 1.0.0
 	--shadow-1dp: 0 0 10px black;
 	--shadow-2dp: 0 0 20px black;
 
+
     --padding: 20px;
 }
 
@@ -37,7 +38,7 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-
+	
     background-color: var(--bg-color);
 
     display: flex;
@@ -94,7 +95,9 @@ body {
     text-decoration: none;
     color: var(--secondary-text-color);
 }
+
 .menues ul li a:hover {color: var(--main-text-color);}
+
 .menues ul li:hover {
     text-decoration: underline;
     transform: translateX(7px);
@@ -105,6 +108,7 @@ body {
     transform: translateX(7px);
     /*font-weight: 500;*/
 }
+
 .current_page_item a {color: var(--main-text-color) !important;}
 
 .sidebar {
@@ -163,3 +167,4 @@ body {
 .button-icon:hover {
 	transform: rotate(45deg);
 }
+
