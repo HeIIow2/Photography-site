@@ -1,0 +1,165 @@
+/*
+Theme Name: hello world
+Theme URI: https://ln.topdf.de/indexx/
+Author: Lars Noack
+Author URI: https://ln.topdf.de/indexx/
+Description: This is my a custom theme for a professional website for my girlfriends mother.
+Version: 1.0.0
+*/
+@font-face {
+    font-family: Roboto;
+    src: url(assets/Roboto-regular.ttf);
+}
+
+:root {
+    --bg-color: #121212;
+	--bg-1dp: #1e1e1e;
+	--bg-2dp: rgba(255, 255, 255, 0.07);
+	--bg-3dp: rgba(255, 255, 255, 0.08);
+	--bg-4dp: rgba(255, 255, 255, 0.09);
+	
+	--main-text-color: #fff;
+	--secondary-text-color: #aaa;
+	
+	--accent-color: #5b8c80;
+	
+	--shadow-1dp: 0 0 10px black;
+	--shadow-2dp: 0 0 20px black;
+
+    --padding: 20px;
+}
+
+html {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    background-color: var(--bg-color);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+	
+	color: var(--main-text-color);
+}
+
+.site-header {
+    font-size: 2em;
+    padding-right: var(--padding);
+    padding-left: var(--padding);
+}
+
+.site-title {
+    margin-bottom: 0;
+}
+
+.site-title a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.site-description {
+    margin-top: 0;
+	color: var(--main-text-color);
+}
+
+.no-article {
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/placeholder.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.menues {
+    font-size: 1.1em;
+    padding-right: var(--padding);
+    padding-left: var(--padding);
+}
+.menues ul {
+    list-style: none;
+    padding: 0;
+}
+.menues ul li {
+    padding-bottom: 10px;
+    transition: all 0.1s ease-in-out;
+}
+.menues ul li a {
+    text-decoration: none;
+    color: var(--secondary-text-color);
+}
+.menues ul li a:hover {color: var(--main-text-color);}
+.menues ul li:hover {
+    text-decoration: underline;
+    transform: translateX(7px);
+    /*font-weight: 500;*/
+}
+.current_page_item {
+    text-decoration: underline;
+    transform: translateX(7px);
+    /*font-weight: 500;*/
+}
+.current_page_item a {color: var(--main-text-color) !important;}
+
+.sidebar {
+	position: sticky;
+	box-shadow: var(--shadow-2dp);
+	background-color: var(--bg-2dp);
+    max-width: 250px;
+    min-width: 250px;
+	height: 100vh;
+}
+
+.site-content {
+    flex-grow: 4;
+}
+
+
+
+
+
+.site-posts {
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+}
+.entry-title {
+    text-align: center;
+}
+
+.button-container {
+	margin-left: var(--padding);
+	
+	position: absolute;
+	bottom: var(--padding);
+	display: flex;
+	flex-direction: row;
+}
+
+.button-container button {
+	padding: 0;
+	background-color: rgba(0,0,0,0);
+	border: none;
+	text-decoration: none;
+	border-radius: 0;
+}
+
+.button-icon {
+	background-color: var(--main-text-color);
+	
+	border-radius: 2px;
+	
+	width: 1.5em;
+	height: 1.5em;
+	
+	transition: all 0.1s ease-in-out;
+}
+
+.button-icon:hover {
+	transform: rotate(45deg);
+}
