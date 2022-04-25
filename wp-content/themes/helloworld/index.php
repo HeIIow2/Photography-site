@@ -9,7 +9,19 @@
 
 <body <?php body_class(); ?>>
 
-<div class="sidebar sidebar-hidden">
+<script>
+    function expand_sidebar() {
+        var sidebar_elem = document.getElementById("sidebar");
+        sidebar_elem.classList.remove("sidebar-hidden")
+    }
+    function collapse_sidebar() {
+        var sidebar_elem = document.getElementById("sidebar");
+        sidebar_elem.classList.add("sidebar-hidden")
+    }
+</script>
+<button class="hidden-sidebar-button" onclick="expand_sidebar()">extend</button>
+
+<div class="sidebar" id="sidebar">
     <header class="site-header">
         <p class="site-title">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -29,57 +41,62 @@
         ) );?>
     </div>
 
-	
-	<div class="button-container">
-		
-		<script>
-			var r = document.querySelector(':root');
-			const max_themes = 2;
-			const themes = {
-                "--bg-color": ["#121212", "#fff"],
-                "--bg-1dp": ["#1e1e1e", "#f2f2f2"],
-                "--bg-2dp": ["rgba(255, 255, 255, 0.07)", "rgba(0, 0, 0, 0.07)"],
-                "--bg-3dp": ["rgba(255, 255, 255, 0.08)", "rgba(0, 0, 0, 0.08)"],
-                "--bg-4dp": ["rgba(255, 255, 255, 0.09)", "rgba(0, 0, 0, 0.09)"],
 
-                "--main-text-color": ["#fff", "#000"],
-                "--secondary-text-color": ["#aaa", "#333"],
+    <script>
+        var r = document.querySelector(':root');
+        const max_themes = 2;
+        const themes = {
+            "--bg-color": ["#121212", "#fff"],
+            "--bg-1dp": ["#1e1e1e", "#f2f2f2"],
+            "--bg-2dp": ["#232323", "#ededed"],
+            "--bg-3dp": ["rgba(255, 255, 255, 0.08)", "rgba(0, 0, 0, 0.08)"],
+            "--bg-4dp": ["rgba(255, 255, 255, 0.09)", "rgba(0, 0, 0, 0.09)"],
 
-                "--accent-color": ["#5b8c80", "#5b8c80"],
-                "--shadow-1dp": ["0 0 10px black", "0 0 0 2px var(--accent-color)"],
-                "--shadow-2dp": ["0 0 20px black", "0 0 0 2px var(--accent-color)"]
+            "--main-text-color": ["#fff", "#000"],
+            "--secondary-text-color": ["#aaa", "#333"],
+
+            "--accent-color": ["#5b8c80", "#5b8c80"],
+            "--shadow-1dp": ["0 0 10px black", "0 0 0 2px var(--accent-color)"],
+            "--shadow-2dp": ["0 0 20px black", "0 0 0 2px var(--accent-color)"]
+        }
+
+        set_theme();
+
+        function set_theme()
+        {
+            for (let [key, value] of Object.entries(themes)) {
+                r.style.setProperty(key, value[current_theme]);
             }
+            saveTheme();
+        }
+
+        function toggle_theme()
+        {
+            current_theme += 1;
+            current_theme = current_theme % max_themes;
 
             set_theme();
+        }
+    </script>
 
-            function set_theme()
-            {
-                for (let [key, value] of Object.entries(themes)) {
-                    r.style.setProperty(key, value[current_theme]);
-                }
-                saveTheme();
-            }
-		
-			function toggle_theme()
-			{
-				current_theme += 1;
-				current_theme = current_theme % max_themes;
-
-				set_theme();
-			}
-		</script>
+	<div class="button-container">
 		<button onclick="toggle_theme();"><div class="button-icon"></div></button>
 
-        <button onclick="toggle_theme();"><div class="button-icon"></div></button>
+        <button onclick="collapse_sidebar();"><div class="button-icon"></div></button>
 	</div>
-
-
 </div>
 
 <div class="site-content">
     <?php
     if ( have_posts() ) :
         ?>
+        <script>
+            if (!window.matchMedia("(max-width: 600px)").matches) {
+                expand_sidebar();
+            } else {
+                collapse_sidebar();
+            }
+        </script>
 
         <div class="site-posts">
 
@@ -113,6 +130,7 @@
     <?php
     else :
         ?>
+        <script>expand_sidebar();</script>
         <div class="no-article">
 
         </div>
