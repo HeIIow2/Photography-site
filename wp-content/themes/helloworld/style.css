@@ -137,12 +137,15 @@ body {
 }
 
 .button-container {
-	margin-left: var(--padding);
+    box-sizing: border-box;
+    padding: var(--padding);
+    width: 100%;
 	
 	position: absolute;
-	bottom: var(--padding);
+	bottom: 0;
 	display: flex;
 	flex-direction: row;
+    justify-content: space-between;
 }
 
 .button-container button {
@@ -165,6 +168,8 @@ body {
 }
 
 .button-icon:hover {
-	transform: rotate(45deg);
+	transform: rotate(90deg);
 }
+
+
 

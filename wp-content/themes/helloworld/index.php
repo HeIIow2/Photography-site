@@ -9,7 +9,7 @@
 
 <body <?php body_class(); ?>>
 
-<div class="sidebar">
+<div class="sidebar sidebar-hidden">
     <header class="site-header">
         <p class="site-title">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -35,34 +35,42 @@
 		<script>
 			var r = document.querySelector(':root');
 			const max_themes = 2;
-			var current = 0;
 			const themes = {
-				"--bg-color": ["#121212", "#fff"],
-				"--bg-1dp": ["#1e1e1e", "#f2f2f2"],
-				"--bg-2dp": ["rgba(255, 255, 255, 0.07)", "rgba(0, 0, 0, 0.07)"],
-				"--bg-3dp": ["rgba(255, 255, 255, 0.08)", "rgba(0, 0, 0, 0.08)"],
-				"--bg-4dp": ["rgba(255, 255, 255, 0.09)", "rgba(0, 0, 0, 0.09)"],
-	
-				"--main-text-color": ["#fff", "#000"],
-				"--secondary-text-color": ["#aaa", "#333"],
-	
-				"--accent-color": ["#5b8c80", "#5b8c80"],
-				"--shadow-1dp": ["0 0 10px black", "0 0 0 2px var(--accent-color)"],
-				"--shadow-2dp": ["0 0 20px black", "0 0 0 2px var(--accent-color)"]
-			}
+                "--bg-color": ["#121212", "#fff"],
+                "--bg-1dp": ["#1e1e1e", "#f2f2f2"],
+                "--bg-2dp": ["rgba(255, 255, 255, 0.07)", "rgba(0, 0, 0, 0.07)"],
+                "--bg-3dp": ["rgba(255, 255, 255, 0.08)", "rgba(0, 0, 0, 0.08)"],
+                "--bg-4dp": ["rgba(255, 255, 255, 0.09)", "rgba(0, 0, 0, 0.09)"],
+
+                "--main-text-color": ["#fff", "#000"],
+                "--secondary-text-color": ["#aaa", "#333"],
+
+                "--accent-color": ["#5b8c80", "#5b8c80"],
+                "--shadow-1dp": ["0 0 10px black", "0 0 0 2px var(--accent-color)"],
+                "--shadow-2dp": ["0 0 20px black", "0 0 0 2px var(--accent-color)"]
+            }
+
+            set_theme();
+
+            function set_theme()
+            {
+                for (let [key, value] of Object.entries(themes)) {
+                    r.style.setProperty(key, value[current_theme]);
+                }
+                saveTheme();
+            }
 		
 			function toggle_theme()
 			{
-				current += 1;
-				current = current % max_themes;
-				
-				for (let [key, value] of Object.entries(themes)) {
-					r.style.setProperty(key, value[current]);
-				}
-			
+				current_theme += 1;
+				current_theme = current_theme % max_themes;
+
+				set_theme();
 			}
 		</script>
 		<button onclick="toggle_theme();"><div class="button-icon"></div></button>
+
+        <button onclick="toggle_theme();"><div class="button-icon"></div></button>
 	</div>
 
 
@@ -115,9 +123,6 @@
 
 
 <?php wp_footer(); ?>
-<<<<<<< HEAD
 
-=======
->>>>>>> 615f5ec49abcab70e6a0d099d61cb98fa14ac4ee
 </body>
 </html>
